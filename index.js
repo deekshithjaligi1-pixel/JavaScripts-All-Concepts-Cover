@@ -1,41 +1,49 @@
-// Array of Objects 
+// callback = a function thatv is passed as an argument 
+//              to another function
+//              
+//              used to handle asyncronous opeartions:
+//               1. Reading a file
+//               2. Netwoek responce 
+//               3 . Interaction with databases
+//               
+//               "Hey , when you're done, call this next"
 
-const fruits = [{name:"apple",color:"red",season :"winter"},
-                {name:"mango",color:"yellow",season :"summer"},
-                {name:"watermaelon",color:"green",season :"spring"}]
 
 
-console.log(fruits[0].name);
-console.log(fruits[1].color); 
-console.log(fruits[2].season); 
+hello(bye);
+wait(Hi);
 
-//---------------------------------------------
+function hello(){
+    console.log("Hello!");
+}
 
-fruits.push({name:"orange",color:"orange",season:"rainy"});
-fruits.pop({name:"watermaelon",color:"green",season:"spring"});
-fruits.splice(1,2)
-console.log(fruits);
-//----------------------------forEach-----------------
-fruits.forEach(fruits => console.log(fruits.name));
+function bye(){
+    console.log("Bye!");
+}
 
-//----------------------  Map() -------------------------
+function wait(){
+    console.log("Wait!"); 
+}
 
-const fruitsNames = fruits.map(fruit => fruit.name);
-const fruitsColors = fruits.map(fruit => fruit.color);
-const fruitsSeasons = fruits.map(fruit => fruit.season);
+function Hi(){
+        console.log("Hi!"); 
+}
+//---------------------------------------------------
 
-//----------------------- filter() -------------------------
+sum(displayPage,1,2);
 
-const orangefruits = fruits.filter(fruit => fruit.color ==="orange");
-const applefruits= fruits.filter(fruit => fruit.season ==="winter");
-const watermelonfruits = fruits.filter(fruit => fruit.name ==="watermaelon");
+function sum(callback,x,y){
+    let result = x+y;
+    callback(result);
+}
 
-console.log(watermelonfruits);
 
-//---------------------reduce()-------------------------
+function displayConsole(result){
+    console.log(result);
+}
 
-const maxFruits = fruits.reduce((max,fruit) => fruit.length > max.length ? fruit:max);
-const minFruits = fruits.reduce((min,fruit) => fruit.length < min.length ? fruit:min);
+function displayPage(result){
+    document.getElementById("myId").textContent = result;
 
-console.log(maxFruits);
-console.log(minFruits);
+}
+
